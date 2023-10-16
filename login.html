@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+            <h1>Login</h1>
+            <hr> 
+            {% if messages %}
+
+            <div class="alert alert-primary" role="alert">
+              {% for message in messages %}
+               {{message|linebreaksbr}}
+              {% endfor %}
+    
+            </div>
+        
+        
+    <ul class="messages">
+       
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message|linebreaksbr}}</li>
+        
+    </ul>
+    {% endif %}
+            
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+ 
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+            </div>
+           
+            <p>Dont have an account? <a href='/register/'> Register</a>
+            </p>
+            <button type="submit" class="btn btn-primary"> Login </button>
+          
+          </div>
+      </form>
+      <style>
+        /* Add your custom CSS styles here */
+        .alert {
+          margin-bottom: 0; /* Add this line to remove the extra space at the bottom of the alert */
+          /* Add any other custom styles you need for the alert here */
+        }
+      </style>
+      {% endblock %} 
+      
